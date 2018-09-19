@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'page#home'
   get 'page/home'
-  resources :books, only: %i(index)
+  resources :books, only: [:index, :new, :create]
 
   namespace :api do
     resources :books, only: %i(show)
