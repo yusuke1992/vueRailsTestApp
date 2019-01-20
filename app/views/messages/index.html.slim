@@ -1,0 +1,33 @@
+javascript:
+  rails = window.rails = {};
+  rails.messages = #{raw @messages.to_json};
+
+
+p#notice= notice
+h1 Messages
+table#message-table
+  tr
+    th Username
+    th Body
+    th colspan="3"
+  tr v-for=("message in messages")
+    td
+      = '{{ message.username }}'
+    td
+      =  '{{ message.body }}'
+br/
+= form_for @message, html: { id: 'message-form' } do |f|
+  .field
+    = f.label :username
+    = @message.username
+    = f.hidden_field :username, 'v-model': 'message.username'
+  .field
+    = f.text_area :body, cols: 100, rows: 10, 'v-model': 'message.body'
+  button type="button" v-on:click="addNewMessage"  送信
+  button type="button" v-on:click="showData"  更新
+  br/
+  span username: {{ message.username }}
+  br/
+  span body: {{ message.body }}
+  br/
+= javascript_pack_tag 'messages/index'

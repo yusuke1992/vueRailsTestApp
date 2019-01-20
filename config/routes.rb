@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   root to: 'page#home'
   get 'page/home'
   resources :books, only: [:index, :new, :create]

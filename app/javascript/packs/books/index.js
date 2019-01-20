@@ -5,14 +5,14 @@ new Vue({
   el: '.js-booksIndex',
   data: {
     bookInfo:{},
-    bookInfoBool: true
+    bookInfoBool: false
   },
   methods: {
     setBookInfo(id){
       axios.get(`api/books/${id}.json`)
         .then(res => {
           this.bookInfo = res.data;
-          this.bookInfobool = false;
+          this.bookInfoBool = true;
         });
     }
   }
