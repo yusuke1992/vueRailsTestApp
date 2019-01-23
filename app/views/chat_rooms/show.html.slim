@@ -1,0 +1,11 @@
+#chat
+  - @chat_messages.each do |chat_message|
+    .message
+      .message__date
+        = chat_message.created_at
+      .message__content
+        = chat_message.content
+form
+  |  投稿:
+  input[type="text"]
+  input[type="submit" value="投稿" onclick="postChatMessage()"]
